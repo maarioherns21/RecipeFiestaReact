@@ -14,6 +14,8 @@ const index = async (req, res) => {
   }
 };
 
+
+
 const createRecipe = async (req, res) => {
   // const { body, title, creator, images } = req.body;
   const { title, body, creator, images } = req.body;
@@ -33,6 +35,8 @@ const createRecipe = async (req, res) => {
   }
 };
 
+
+
 const updateRecipe = async (req, res) => {
   const { id } = req.params;
   const { title, body, creator, images } = req.body;
@@ -51,6 +55,8 @@ const updateRecipe = async (req, res) => {
 };
 
 
+
+
 const deleteRecipe = async (req, res) => {
   const { id } = req.params;
   try {
@@ -64,8 +70,10 @@ const deleteRecipe = async (req, res) => {
   }
 };
 
+
+
 const CTRL = {"index":index, "createRecipe": createRecipe, "deleteRecipe": deleteRecipe, "updateRecipe": updateRecipe}
 
-export default CTRL
+export default CTRL;
 
 
