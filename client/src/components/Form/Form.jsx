@@ -2,11 +2,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FileBase64 from "react-file-base64"
 import "./Form.css"
+import useConstant from "../useFetch/useConstant";
 
 const Form = ()=> {
-const [formData, setFormData] =useState({ title: "" , body:"" , creator: "mario" , images:""})
-const [isPending , setIsPending] =useState(false)
-const navigate = useNavigate()
+const { urlPost, POST } = useConstant();
+const [formData, setFormData] = useState({
+  title: "",
+  body: "",
+  creator: "mario",
+  images: "",
+});
+const [isPending, setIsPending] = useState(false);
+const navigate = useNavigate();
 
 
 const handleSubmit = async (e) => {
@@ -18,8 +25,8 @@ const handleSubmit = async (e) => {
     images: formData.images,
   };
   setIsPending(true);
-  const newRecipe = await fetch("http://localhost:4000/recipes/new", {
-    method: "POST",
+  const newRecipe = await fetch(urlPost, {
+    method: POST,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(recipe),
   });

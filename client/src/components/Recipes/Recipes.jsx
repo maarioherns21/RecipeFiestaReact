@@ -1,3 +1,4 @@
+import useConstant from "../useFetch/useConstant"
 import useFetch from "../useFetch/useFetch"
 import Recipe from "./Recipe/Recipe"
 
@@ -5,7 +6,8 @@ import Recipe from "./Recipe/Recipe"
 
 const Recipes = () => {
 // const {recipes}=useFetch()
-const {recipes, isloading, error} =useFetch()
+const {url} =useConstant()
+const {recipes, isloading, error} =useFetch(url)
 
 
 

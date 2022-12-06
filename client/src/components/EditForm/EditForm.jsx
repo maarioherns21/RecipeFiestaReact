@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64"
 import "./EditForm.css"
+import useConstant from "../useFetch/useConstant";
 
 const EditForm = ({recipe})=> {
+const {url, PATCH} =useConstant()
 const [formData, setFormData] =useState({ title: recipe.title , body: recipe.body , creator: recipe.creator , images: recipe.images})
 const [isPending , setIsPending] =useState(false)
 const navigate = useNavigate()
@@ -18,8 +20,8 @@ const handleSubmit = async (e) => {
     images: formData.images,
   };
   setIsPending(true);
-  const newRecipe = await fetch(`http://localhost:4000/recipes/${id}` , {
-    method: "PATCH",
+  const newRecipe = await fetch(`${url}/${id}` , {
+    method: PATCH,
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(recipe),
   });

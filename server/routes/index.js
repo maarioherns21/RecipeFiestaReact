@@ -12,8 +12,6 @@ router.post("/new" , CTRL.createRecipe)
 router.patch('/:id' , CTRL.updateRecipe)
 
 router.delete("/:id" , CTRL.deleteRecipe )
-// router.get("/form");
 
-// router.post("/user");
 
 export default router;

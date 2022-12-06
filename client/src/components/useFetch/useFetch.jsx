@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 
 
 
-const useFetch = () =>{
+const useFetch = (url) =>{
     const [recipes, setRecipes] =useState([])
     const [error, setError] =useState([])
     const [isloading, setIsLoading] =useState(true)
-    
+
     useEffect(() => {
-      fetch("http://localhost:4000/recipes")
+      fetch(url)
         .then((res) => {
           return res.json();
         })
@@ -21,7 +21,7 @@ const useFetch = () =>{
           setError(error.message);
           setIsLoading(false)
         });
-    }, []);
+    }, [url]);
 
    return {
     recipes, error, isloading

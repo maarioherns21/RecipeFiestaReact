@@ -3,9 +3,11 @@ import useFetch from "../useFetch/useFetch"
 import { useNavigate } from "react-router-dom";
 import  Popup from "reactjs-popup";
 import EditForm from "../EditForm/EditForm";
+import useConstant from "../useFetch/useConstant";
 
 const RecipeDetails = () =>{
-  const { recipes } = useFetch();
+  const {url, DELETE} = useConstant()
+  const { recipes } = useFetch(url);
   const param = useParams();
   const recipe = recipes.find((recipe) => recipe._id == param.id);
   const navigate = useNavigate()
@@ -16,8 +18,8 @@ const RecipeDetails = () =>{
   console.log(recipe);
   
   const handleDelete = async () => {
-    const deleteR = await fetch(`http://localhost:4000/recipes/${param.id}` ,{
-      method: "DELETE",
+    const deleteR = await fetch(`${url}/${param.id}` ,{
+      method: DELETE,
     });
     console.log(deleteR);
     navigate("/")
